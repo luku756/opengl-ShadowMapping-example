@@ -1,6 +1,6 @@
 #version 330
 
-#define NUMBER_OF_LIGHT_COUNT 2 
+#define NUMBER_OF_LIGHT_COUNT 3 
 
 uniform mat4 u_ModelViewProjectionMatrix;
 uniform mat4 u_ModelViewMatrix;
@@ -21,8 +21,8 @@ void main(void) {
 	v_normal_EC = normalize(u_ModelViewMatrixInvTrans*a_normal);  
 	v_tex_coord = a_tex_coord;
 
-	v_shadow_coord[0] = u_ShadowMatrix[0] * vec4(a_position, 1.0f);
-	v_shadow_coord[1] = u_ShadowMatrix[1] * vec4(a_position, 1.0f);
+	for(int i=0;i<NUMBER_OF_LIGHT_COUNT;i++)
+	v_shadow_coord[i] = u_ShadowMatrix[i] * vec4(a_position, 1.0f);
 
 	gl_Position = u_ModelViewProjectionMatrix * vec4(a_position, 1.0f);
 }

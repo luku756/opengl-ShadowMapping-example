@@ -254,10 +254,12 @@ void draw_tiger(void) {
 }
 
 
+
 // other objects
 
-#define N_OBJECTS	1 // objects other than the moving tiger
+#define N_OBJECTS	3 // objects other than the moving tiger
 #define OBJECT_OPTIMUS 0
+#define OBJECT_DRAGON 1
 
 GLuint object_VBO[N_OBJECTS], object_VAO[N_OBJECTS];
 int object_n_triangles[N_OBJECTS];
@@ -289,9 +291,10 @@ void set_up_object(int object_ID, const char *filename, int n_bytes_per_vertex) 
 	glEnableVertexAttribArray(LOC_VERTEX);
 	glVertexAttribPointer(LOC_NORMAL, 3, GL_FLOAT, GL_FALSE, n_bytes_per_vertex, BUFFER_OFFSET(3 * sizeof(float)));
 	glEnableVertexAttribArray(LOC_NORMAL);
-	glVertexAttribPointer(LOC_TEXCOORD, 2, GL_FLOAT, GL_FALSE, n_bytes_per_vertex, BUFFER_OFFSET(6 * sizeof(float)));
-	glEnableVertexAttribArray(LOC_TEXCOORD);
-
+	//if (n_bytes_per_vertex == 8 * sizeof(float)) {
+		glVertexAttribPointer(LOC_TEXCOORD, 2, GL_FLOAT, GL_FALSE, n_bytes_per_vertex, BUFFER_OFFSET(6 * sizeof(float)));
+		glEnableVertexAttribArray(LOC_TEXCOORD);
+	//}
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 }
@@ -349,4 +352,14 @@ void prepare_OPTIMUS(void) {
 		0.61424f, 0.04136f, 0.04136f, 1.0f,
 		0.727811f, 0.626959f, 0.626959f, 1.0f, 76.8f,
 		0.1f, 0.1f, 0.1f, 1.0f);
+}
+
+
+void prepare_dragon(void) {
+	set_up_object(OBJECT_DRAGON, "Data/dragon_vnt.geom", 8 * sizeof(float));
+	initialize_object_material(OBJECT_DRAGON,
+		0.329412f, 0.223529f, 0.027451f, 1.0f,
+		0.780392f, 0.568627f, 0.113725f, 1.0f,
+		0.992157f, 0.941176f, 0.807843f, 1.0f, 76.8f,
+		0.0f, 0.0f, 0.0f, 1.0f);
 }
