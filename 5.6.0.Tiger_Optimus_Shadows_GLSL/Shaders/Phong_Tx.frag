@@ -1,4 +1,4 @@
-#version 330
+#version 400
 
 struct LIGHT {
 	vec4 position; // assume point or direction in EC in this example shader

@@ -164,6 +164,10 @@
     <ClInclude Include="Shaders\LoadShaders.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Shaders\deferred.frag" />
+    <None Include="Shaders\deferred.vert" />
+    <None Include="Shaders\def_phong.frag" />
+    <None Include="Shaders\def_phong.vert" />
     <None Include="Shaders\Phong_Tx.frag" />
     <None Include="Shaders\Phong_Tx.vert" />
     <None Include="Shaders\Shadow.frag" />
