@@ -37,6 +37,18 @@ void draw_axes(void) {
 	glBindVertexArray(0);
 }
 
+void draw_axes(glm::mat4 mvp, float scale) {
+	glUseProgram(h_ShaderProgram_simple);
+	//ModelViewMatrix = glm::scale(ViewMatrix, glm::vec3(scale, scale, scale));
+	//ModelViewProjectionMatrix = ProjectionMatrix * ModelViewMatrix;
+	ModelViewProjectionMatrix = glm::scale(mvp, glm::vec3(20.0f, 20.0f, 20.0f));
+	glUniformMatrix4fv(loc_ModelViewProjectionMatrix_simple, 1, GL_FALSE, &ModelViewProjectionMatrix[0][0]);
+	glLineWidth(3.0f);
+	draw_axes();
+	glLineWidth(1.0f);
+}
+
+
 // floor object
 GLuint rectangle_VBO, rectangle_VAO;
 GLfloat rectangle_vertices[6][8] = {  // vertices enumerated counterclockwise
