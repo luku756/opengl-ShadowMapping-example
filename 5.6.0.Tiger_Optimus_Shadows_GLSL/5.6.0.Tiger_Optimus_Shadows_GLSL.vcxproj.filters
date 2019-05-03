@@ -47,16 +47,16 @@
     <None Include="Shaders\simple.vert">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="Shaders\def_phong.frag">
-      <Filter>리소스 파일</Filter>
-    </None>
-    <None Include="Shaders\def_phong.vert">
-      <Filter>리소스 파일</Filter>
-    </None>
     <None Include="Shaders\deferred.frag">
       <Filter>리소스 파일</Filter>
     </None>
     <None Include="Shaders\deferred.vert">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="Shaders\def_phong.vert.glsl">
+      <Filter>리소스 파일</Filter>
+    </None>
+    <None Include="Shaders\def_phong.frag.glsl">
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>

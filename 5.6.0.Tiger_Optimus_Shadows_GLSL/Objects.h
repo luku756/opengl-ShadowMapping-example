@@ -25,6 +25,13 @@ void prepare_axes(void) { // draw coordinate axes
 	glBindVertexArray(0);
 }
 
+
+#define NUMBER_OF_OBJECT 8
+#define OBJECT_ID_FLOOR 2
+#define OBJECT_ID_TIGER 3
+#define OBJECT_ID_OPTIMUS 0
+#define OBJECT_ID_DRAGON 1
+
 void draw_axes(void) {
 	// assume ShaderProgram_simple is used
 	glBindVertexArray(axes_VAO);
@@ -127,10 +134,12 @@ void prepare_floor(void) { // Draw coordinate axes.
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
 }
 
 void set_material_floor(void) {
 	// assume ShaderProgram_TXPS is used
+	glUniform1i(loc_object_id, OBJECT_ID_FLOOR);
 	glUniform4fv(loc_material.ambient_color, 1, material_floor.ambient_color);
 	glUniform4fv(loc_material.diffuse_color, 1, material_floor.diffuse_color);
 	glUniform4fv(loc_material.specular_color, 1, material_floor.specular_color);
@@ -244,6 +253,7 @@ int read_geometry(GLfloat **object, int bytes_per_primitive, const char *filenam
 }
 
 void prepare_tiger(void) { // vertices enumerated clockwise
+	glUniform1i(loc_object_id, OBJECT_ID_TIGER);
 	int i, n_bytes_per_vertex, n_bytes_per_triangle, tiger_n_total_triangles = 0;
 	char filename[512];
 
@@ -325,6 +335,7 @@ void prepare_tiger(void) { // vertices enumerated clockwise
 }
 
 void set_material_tiger(void) {
+	glUniform1i(loc_object_id, OBJECT_ID_TIGER);
 	// assume ShaderProgram_TXPS is used
 	glUniform4fv(loc_material.ambient_color, 1, material_tiger.ambient_color);
 	glUniform4fv(loc_material.diffuse_color, 1, material_tiger.diffuse_color);
@@ -387,6 +398,8 @@ void set_up_object(int object_ID, const char *filename, int n_bytes_per_vertex) 
 	glBindVertexArray(0);
 }
 
+void push_obj_mat(int object_ID, Material_Parameters material_object);
+
 void initialize_object_material(int object_ID,
 	float a_r, float a_g, float a_b, float a_a,
 	float d_r, float d_g, float d_b, float d_a,
@@ -413,9 +426,12 @@ void initialize_object_material(int object_ID,
 	material_object[object_ID].emissive_color[1] = e_g;
 	material_object[object_ID].emissive_color[2] = e_b;
 	material_object[object_ID].emissive_color[3] = e_a;
+
+	push_obj_mat(object_ID, material_object[object_ID]);
 }
 
 void set_material_object(int object_ID) {
+	glUniform1i(loc_object_id, object_ID);
 	// assume ShaderProgram_PS is used
 	glUniform4fv(loc_material.ambient_color, 1, material_object[object_ID].ambient_color);
 	glUniform4fv(loc_material.diffuse_color, 1, material_object[object_ID].diffuse_color);
