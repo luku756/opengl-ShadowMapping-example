@@ -178,37 +178,6 @@ void prepare_quad(void) { // Draw coordinate axes.
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	//material_floor.ambient_color[0] = 0.0f;
-	//material_floor.ambient_color[1] = 0.05f;
-	//material_floor.ambient_color[2] = 0.0f;
-	//material_floor.ambient_color[3] = 1.0f;
-
-	//material_floor.diffuse_color[0] = 0.2f;
-	//material_floor.diffuse_color[1] = 0.5f;
-	//material_floor.diffuse_color[2] = 0.2f;
-	//material_floor.diffuse_color[3] = 1.0f;
-
-	//material_floor.specular_color[0] = 0.24f;
-	//material_floor.specular_color[1] = 0.5f;
-	//material_floor.specular_color[2] = 0.24f;
-	//material_floor.specular_color[3] = 1.0f;
-
-	//material_floor.specular_exponent = 2.5f;
-
-	//material_floor.emissive_color[0] = 0.0f;
-	//material_floor.emissive_color[1] = 0.0f;
-	//material_floor.emissive_color[2] = 0.0f;
-	//material_floor.emissive_color[3] = 1.0f;
-
-	//glActiveTexture(GL_TEXTURE0 + TEXTURE_INDEX_FLOOR);
-	//glBindTexture(GL_TEXTURE_2D, texture_names[TEXTURE_INDEX_FLOOR]);
-
-	//My_glTexImage2D_from_file("Data/grass_tex.jpg");
-
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 }
 
 void draw_quad(void) {

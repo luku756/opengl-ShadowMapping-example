@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>My560TigerOptimusShadowsGLSL</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>GLSL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -159,13 +160,12 @@
     <ClCompile Include="Shaders\LoadShaders.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header.h" />
     <ClInclude Include="My_Shading.h" />
     <ClInclude Include="Objects.h" />
     <ClInclude Include="Shaders\LoadShaders.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shaders\deferred.frag" />
-    <None Include="Shaders\deferred.vert" />
     <None Include="Shaders\def_phong.frag.glsl" />
     <None Include="Shaders\def_phong.vert.glsl" />
     <None Include="Shaders\Phong_Tx.frag" />
